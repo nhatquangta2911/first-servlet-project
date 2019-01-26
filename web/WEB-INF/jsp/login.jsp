@@ -23,7 +23,7 @@
         <%--<name: tham so truyen vao URL get--%>
 
         <fieldset>
-            <p class="display-4">LOGIN FORM</p>
+            <h1 class="h1">LOGIN FORM</h1>
             ${errorMessage}
             <div class="form-group form-sm">
                 <label for="email">Username:</label>
