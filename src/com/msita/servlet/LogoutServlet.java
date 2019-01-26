@@ -14,11 +14,12 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        HttpSession session =  req.getSession();
-        session.setAttribute("username", null);
-        session.invalidate();
-        out.print("You have successfully logged out! ");
+//        PrintWriter out = resp.getWriter();
+//        HttpSession session =  req.getSession();
+//        session.setAttribute("username", null);
+//        session.invalidate();
+//        out.print("You have successfully logged out! ");
+        CookieUtils.removeCookie(req, resp, "username");
         resp.sendRedirect("/login");
     }
 }

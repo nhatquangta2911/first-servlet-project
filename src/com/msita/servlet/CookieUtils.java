@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CookieUtils {
+
     // private de ko tao instance dc
     private CookieUtils() {
     }
@@ -31,11 +32,8 @@ public class CookieUtils {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(name)) {
                 return cookie;
-            } else {
-                return null;
             }
         }
         return null;
     }
-
 }

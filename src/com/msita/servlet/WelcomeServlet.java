@@ -10,13 +10,10 @@ import java.net.HttpCookie;
 
 @WebServlet(name = "welcome-servlet", urlPatterns = "/welcome")
 public class WelcomeServlet extends HttpServlet {
-
-    CookieUtils cookieUtils = new CookieUtils();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
-        PrintWriter out = resp.getWriter();
+//        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
+//        PrintWriter out = resp.getWriter();
 //        HttpSession session = req.getSession();
 //        if (session.getAttribute("username") != null) {
 //            req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(req, resp);
@@ -25,5 +22,10 @@ public class WelcomeServlet extends HttpServlet {
 //            resp.sendRedirect("/login");
 //        }
 
+        if(CookieUtils.getCookie(req, "username") != null) {
+            req.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp").forward(req, resp);
+        } else {
+            resp.sendRedirect("/login");
+        }
     }
 }
