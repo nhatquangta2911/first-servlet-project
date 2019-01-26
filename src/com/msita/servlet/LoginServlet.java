@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet {
     //  Sau nay khi gui request, gui kem cookie (chua trong header) => server doc header ...
     //  TUY VAO MUC DICH SU DUNG .Neu muon luu thong tin chi co gia tri trong 1 phien lam biec => session
 
+    CookieUtils cookieUtils = new CookieUtils();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,8 +38,10 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (userName.equals("user01") && password.equals("123456")) {
-            HttpSession session = req.getSession();
-            session.setAttribute("username", userName);
+//            HttpSession session = req.getSession();
+//            session.setAttribute("username", userName);
+
+            cookieUtils.addCookie(resp, "username", "userName", 60*60);
             resp.sendRedirect("/welcome");
         } else {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/jsp/login.jsp");
